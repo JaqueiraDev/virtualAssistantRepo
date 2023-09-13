@@ -6,7 +6,7 @@ import time
 import execute_tasks as tasks
 
 # Configure your OpenAI API key
-openai.api_key = "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"
+openai.api_key = "MY_API_KEY"
 user_input = ""
 messages = []
 recognizer = sr.Recognizer()  # initialize the recognizer
