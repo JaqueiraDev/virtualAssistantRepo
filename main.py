@@ -84,38 +84,48 @@ else:
 while keep_conversation:
     recognize_speech()
     if user_input != "":
-        if user_input.lower().__contains__("jarvis") or user_input.lower().__contains__(
-                "jars") or user_input.lower().__contains__("jarvi") or user_input.lower().__contains__("jar"):
+        if (user_input.lower().__contains__("jarvis") or user_input.lower().__contains__("jars")
+                or user_input.lower().__contains__("jobs") or user_input.lower().__contains__("jar")):
             for frase in stop_conversation:
                 if user_input.lower().__contains__(frase):
-                    messages.append({"role": "user", "content": user_input})
-                    response = get_chatgpt_response(messages)  # Get the response from ChatGPT
-                    print("J.A.R.V.I.S: ", response)  # Display the response from ChatGPT and play it as speech
+                    # messages.append({"role": "user", "content": user_input})
+                    # response = get_chatgpt_response(messages)  # Get the response from ChatGPT
+                    # print("J.A.R.V.I.S: ", response)  # Display the response from ChatGPT and play it as speech
                     if tasks.os_name == "Darwin":
-                        text_to_speech2(response, 160)  # text_to_speech(response)
+                        text_to_speech2("See you next time. Have a great day!", 160)  # text_to_speech(response, 160)
                     else:
-                        text_to_speech(response)  # text_to_speech(response)
+                        text_to_speech("See you next time. Have a great day!")  # text_to_speech(response)
                     keep_conversation = False  # Get out of the while loop
-                    # print("Should close conversation right now!")
+                    print("Conversation has been closed!")
                     break
             if (user_input.lower().__contains__("open google") or user_input.lower().__contains__("open opera")
                     or user_input.lower().__contains__("open browser")):
+                if tasks.os_name == "Darwin":
+                    text_to_speech2("Will do it, Sir!", 160)
+                else:
+                    text_to_speech("Will do it, Sir!")
                 tasks.open_page(google_url)
                 user_input = ""
             elif user_input.lower().__contains__("open page") or user_input.lower().__contains__("open the page"):
                 input_split = user_input.split("page", 1)
                 new_url = input_split[1]
+                if tasks.os_name == "Darwin":
+                    text_to_speech2("Will do it, Sir!", 160)
+                else:
+                    text_to_speech("Will do it, Sir!")
                 tasks.open_page(new_url)
                 user_input = ""
             elif user_input.lower().__contains__('open app') or user_input.lower().__contains__('open application'):
                 input_split = user_input.split('open app' or 'open application', 1)
                 app = input_split[1].strip().capitalize()
+                if tasks.os_name == "Darwin":
+                    text_to_speech2("Will do it, Sir!", 160)
+                else:
+                    text_to_speech("Will do it, Sir!")
                 tasks.open_app(app)
                 user_input = ""
             elif keep_conversation:
-                messages.append(
-                    {"role": "user", "content": "Act like your name is JARVIS. "
-                                                + user_input})
+                messages.append({"role": "user", "content": "Act like your name is JARVIS. " + user_input})
                 response = get_chatgpt_response(messages)  # Get the response from ChatGPT
                 print("J.A.R.V.I.S: ", response)  # Display the response from ChatGPT and play it as speech
                 if tasks.os_name == "Darwin":
@@ -123,4 +133,4 @@ while keep_conversation:
                 else:
                     text_to_speech(response)  # text_to_speech(response)
 
-print("Goodbye! Have a great day.")
+print("See you next time. Have a great day!")
