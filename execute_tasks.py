@@ -14,7 +14,7 @@ def open_page(url):
 
 def open_app(app):  # Open Mac Applications
     pyautogui.hotkey("command", "l")
-    pyautogui.sleep(1)
+    pyautogui.sleep(2)
     pyautogui.typewrite(app)
     pyautogui.sleep(2)
     pyautogui.press('enter')
@@ -30,3 +30,7 @@ def check_os():  # Checking and printing OS type
 
 def play_song_spotify():  # Play a song on Spotify
     print(" ")
+
+
+def search_on_google():
+    print('')

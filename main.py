@@ -4,9 +4,11 @@ from gtts import gTTS
 import os
 import time
 import execute_tasks as tasks
+import pyaudio
+
 
 # OpenAI API key
-openai.api_key = "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"  # ATTENTION REMOVE THIS API KEY BEFORE COMMIT
+openai.api_key = "Your API key"  # ATTENTION REMOVE THIS API KEY BEFORE COMMIT
 user_input, url_to_open = "", ''
 messages = []  # List to keep the conversation
 recognizer = sr.Recognizer()  # initialize the recognizer
@@ -23,7 +25,8 @@ def main():
 
     def recognize_speech():  # Function to recognize speech
         global user_input
-        with sr.Microphone() as source:  # Open the microphone and start listening
+        mic = sr.Microphone()
+        with mic as source:  # Open the microphone and start listening
             print("Listening...")
             recognizer.pause_threshold = 1
             recognizer.adjust_for_ambient_noise(source)
@@ -31,11 +34,12 @@ def main():
         try:
             user_input = recognizer.recognize_google(audio).lower()  # Convert speech to text
             print(user_input)
-            return user_input
         except sr.UnknownValueError:
             print("Sorry, i could not understand. Please say again.")
+            return ''
         except sr.RequestError:
             print("Sorry, there was an error with the speech recognition service. Please try again.")
+            return ''
         return ""
 
     def text_to_speech(text):  # Function for TTS Windows or Linux System
@@ -56,7 +60,7 @@ def main():
         gpt_response = openai.ChatCompletion.create(
             model=model,  # Use the GPT-3.5 turbo engine
             messages=question,
-            max_tokens=150,
+            max_tokens=300,
             n=1,
             stop=None,
             temperature=0.5,
@@ -67,7 +71,7 @@ def main():
 
     def speech_function(say_text):
         if tasks.os_name == "Darwin":
-            text_to_speech2(say_text, 160)
+            text_to_speech2(say_text, 165)
         else:
             text_to_speech(say_text)
 
@@ -99,8 +103,8 @@ def main():
                         speech_function("Will do it, Sir!")
                         tasks.open_page(new_url)
                         user_input = ""
-                    elif user_input.lower().__contains__('open app') or user_input.lower().__contains__(
-                            'open application'):
+                    elif (user_input.lower().__contains__('open app') or user_input.lower().__contains__(
+                            'open application')):
                         input_split = user_input.split('open app' or 'open application', 1)
                         app = input_split[1].strip().capitalize()
                         speech_function(f"Ok, opening {app}")
