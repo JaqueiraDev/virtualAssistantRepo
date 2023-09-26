@@ -8,7 +8,7 @@ import pyaudio
 
 
 # OpenAI API key
-openai.api_key = "Your API key"  # ATTENTION REMOVE THIS API KEY BEFORE COMMIT
+openai.api_key = "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"  # ATTENTION REMOVE THIS API KEY BEFORE COMMIT
 user_input, url_to_open = "", ''
 messages = []  # List to keep the conversation
 recognizer = sr.Recognizer()  # initialize the recognizer
@@ -103,13 +103,44 @@ def main():
                         speech_function("Will do it, Sir!")
                         tasks.open_page(new_url)
                         user_input = ""
-                    elif (user_input.lower().__contains__('open app') or user_input.lower().__contains__(
-                            'open application')):
-                        input_split = user_input.split('open app' or 'open application', 1)
-                        app = input_split[1].strip().capitalize()
-                        speech_function(f"Ok, opening {app}")
-                        tasks.open_app(app)
-                        user_input = ""
+                    elif user_input.lower().__contains__('search for'):
+                        input_split = user_input.split('search for', maxsplit=1)
+                        text_to_search = input_split[1]
+                        speech_function(f"Ok, searching for {text_to_search} on google!")
+                        tasks.search_on_google(text_to_search)
+                    elif user_input.lower().__contains__('open application'):
+                        input_split_application = user_input.split('application', 1)
+                        print(input_split_application)
+                        if len(input_split_application) < 2:
+                            speech_function("Sorry, i couldn't understand which application you want to open.")
+                        else:
+                            app = input_split_application[1]
+                            speech_function(f"Ok, opening {app}")
+                            tasks.open_app(app)
+                            user_input = ""
+                    elif user_input.lower().__contains__('open app'):
+                        input_split_app = user_input.split('open app ', 1)
+                        print(input_split_app)
+                        if len(input_split_app) < 2:
+                            speech_function("Sorry, i couldn't understand which application you want to open.")
+                        else:
+                            app = input_split_app[1]
+                            speech_function(f"Ok, opening {app}")
+                            tasks.open_app(app)
+                            user_input = ""
+                    elif user_input.lower().__contains__('play the song') or user_input.lower().__contains__(
+                            'play the music'):
+                        input_split_song = user_input.split('the song', 1)
+                        input_split_music = user_input.split('the music', 1)
+                        if len(input_split_song) > 1:
+                            music_name = input_split_song[1].strip()
+                        elif len(input_split_music) > 1:
+                            music_name = input_split_music[1].strip()
+                        else:
+                            speech_function("I couldn't understand which song or music you want to play.")
+                        speech_function(f"Ok, opening spotify!")
+                        tasks.play_song_spotify(music_name)
+                        user_input = ''
                     elif keep_conversation:
                         messages.append({"role": "user", "content": "Act like your name is JARVIS. " + user_input})
                         response = get_chatgpt_response(messages)  # Get the response from ChatGPT
