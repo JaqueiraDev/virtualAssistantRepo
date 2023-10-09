@@ -1,4 +1,5 @@
 import openai
+import pyautogui
 import speech_recognition as sr
 from gtts import gTTS
 import os
@@ -6,6 +7,7 @@ import time
 import execute_tasks as tasks
 import pyaudio
 import myApi
+import re
 
 # OpenAI API key
 openai.api_key = myApi.openai_key
@@ -144,6 +146,11 @@ def main():
                                     speech_function(f"Ok, opening {app}")
                                     tasks.open_app(app)
                                     user_input = ""
+                            elif user_input.lower().__contains__('get mouse position'):
+                                tasks.get_mouse_position()
+                                pyautogui.sleep(3)
+                                speech_function(tasks.mouse_position)
+                                user_input = ''
                             elif user_input.lower().__contains__('open app'):
                                 input_split_app = user_input.split('open app ', 1)
                                 print(input_split_app)
@@ -154,26 +161,26 @@ def main():
                                     speech_function(f"Ok, opening {app}")
                                     tasks.open_app(app)
                                     user_input = ""
-                            elif user_input.lower().__contains__('play the song') or user_input.lower().__contains__(
-                                    'play the music'):
-                                input_split_song = user_input.split('the song', 1)
-                                input_split_music = user_input.split('the music', 1)
-                                if len(input_split_song) > 1:
-                                    music_name = input_split_song[1].strip()
-                                elif len(input_split_music) > 1:
-                                    music_name = input_split_music[1].strip()
+                            elif user_input.lower().__contains__('on spotify'):
+                                input_strip_music = user_input.strip()
+                                pattern = re.compile(r'play (.+?) on spotify', re.IGNORECASE)
+                                input_request = pattern.search(input_strip_music)
+                                if input_request:
+                                    match = input_request.group(1)
+                                    print(match)
+                                    speech_function(f"Ok, lets play {match} on spotify")
+                                    tasks.play_song_spotify(match)
                                 else:
                                     speech_function("I couldn't understand which song or music you want to play.")
-                                    speech_function(f"Ok, opening spotify!")
-                                    tasks.play_song_spotify(music_name)
-                                    user_input = ''
+                                user_input = ''
                             elif keep_conversation:
                                 tkn = 300
                                 messages.append(
-                                    {"role": "user", "content": "Act like your name is John. " + user_input})
+                                    {"role": "user", "content": "Act like you are John." + user_input})
                                 response = get_chatgpt_response(messages)  # Get the response from ChatGPT
                                 print("J.O.H.N.: ", response)  # Display the response from ChatGPT and play it as speech
                                 speech_function(response)  # text_to_speech(response)
+                                user_input = ''
                 elif interview_mode:
                     for frase in stop_conversation:
                         if user_input.lower().__contains__(frase):

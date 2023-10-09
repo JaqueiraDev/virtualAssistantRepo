@@ -3,18 +3,27 @@ import subprocess
 import platform
 import pyautogui
 from selenium import webdriver as options
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import main
 
 os_name = ''
 pyautogui.FAILSAFE = True
 first_time = True
+mouse_position = ''
 
 
 # Open Opera with specific URL
 def open_page(url):
     opera_path = "/Applications/Opera.app/Contents/MacOS/Opera"
     subprocess.run([opera_path, url])
+
+
+def get_mouse_position():
+    global mouse_position
+    print(pyautogui.position())
+    mouse_position = str(pyautogui.position())
 
 
 def search_on_google(search_text):
@@ -32,14 +41,21 @@ def search_on_google(search_text):
     pyautogui.press('enter')
 
 
-def play_song_spotify(music_name):
-    navigator = options.Firefox()
-    navigator.get('https://www.spotify.com')
-    navigator.maximize_window()
-    pyautogui.sleep(2)
-    button_cookie_xpath = '//*[@id="onetrust-accept-btn-handler"]'  # Xpath from cookie Accept button on Chrome
-    button_cookie = navigator.find_element(By.XPATH, button_cookie_xpath)  # Create variable and find button
-    button_cookie.click()
+def play_song_spotify(requested_song):
+    app = 'Spotify'
+    open_app(app)
+    pyautogui.sleep(1)
+    pyautogui.moveTo(104, 144)
+    pyautogui.sleep(1)
+    pyautogui.click(104, 144)
+    pyautogui.sleep(1)
+    pyautogui.typewrite(requested_song)
+    pyautogui.sleep(1)
+    pyautogui.press('enter')
+    pyautogui.sleep(1)
+    pyautogui.moveTo(827, 415)
+    pyautogui.sleep(1)
+    pyautogui.click(827, 415)
 
 
 def open_app(app):  # Open Mac Applications
@@ -49,12 +65,10 @@ def open_app(app):  # Open Mac Applications
         pyautogui.sleep(3)
         first_time = False
     pyautogui.hotkey("command", "l")
-    pyautogui.sleep(2)
+    pyautogui.sleep(1)
     pyautogui.typewrite(app)
-    pyautogui.sleep(2)
+    pyautogui.sleep(1)
     pyautogui.press('enter')
-    if app == "spotify":
-        play_song_spotify()
 
 
 def check_os():  # Checking and printing OS type

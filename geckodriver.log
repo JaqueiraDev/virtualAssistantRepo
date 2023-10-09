@@ -201,3 +201,47 @@ JavaScript warning: https://open.spotifycdn.com/cdn/build/web-player/vendor~web-
 80769/h/r<@https://open.spotifycdn.com/cdn/build/web-player/vendor~web-player.15b262d7.js:1:4994301
 
 1695733022267	Marionette	INFO	Stopped listening on port 56324
+1696849173801	geckodriver	INFO	Listening on 127.0.0.1:56430
+1696849174175	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/22/24np_k0916b7_6r_hswc_rcr0000gn/T/rust_mozprofilePRv4ng"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1696849174596	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-remote-allow-hosts"
+1696849174954	Marionette	INFO	Listening on port 56449
+Read port: 56449
+WebDriver BiDi listening on ws://127.0.0.1:56431
+1696849175167	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:56431/devtools/browser/4a653ca2-d7a4-4e4b-9ed0-db615cbb8571
+JavaScript error: https://open.spotifycdn.com/cdn/build/web-player/vendor~web-player.02627809.js, line 1: TypeError: The event is invalid and has been rejected for reason: UNKNOWN_OWNER
+1696849299961	geckodriver	INFO	Listening on 127.0.0.1:56584
+1696849300466	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/22/24np_k0916b7_6r_hswc_rcr0000gn/T/rust_mozprofilespEBLG"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1696849300868	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-remote-allow-hosts"
+1696849301022	Marionette	INFO	Listening on port 56595
+Read port: 56595
+WebDriver BiDi listening on ws://127.0.0.1:56585
+1696849301298	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:56585/devtools/browser/126bc5ec-8293-4953-96cc-23dd9b10fa5c
+JavaScript error: https://open.spotifycdn.com/cdn/build/web-player/vendor~web-player.02627809.js, line 1: TypeError: The event is invalid and has been rejected for reason: UNKNOWN_OWNER
+JavaScript error: https://open.spotifycdn.com/cdn/build/web-player/vendor~web-player.02627809.js, line 1: TypeError: The event is invalid and has been rejected for reason: UNKNOWN_OWNER
+JavaScript error: https://open.spotifycdn.com/cdn/build/web-player/vendor~web-player.02627809.js, line 1: TypeError: The event is invalid and has been rejected for reason: UNKNOWN_OWNER
+1696849499920	Marionette	INFO	Stopped listening on port 56595
+1696855281118	Marionette	INFO	Stopped listening on port 56449
+1696883915025	geckodriver	INFO	Listening on 127.0.0.1:57217
+1696883915398	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/22/24np_k0916b7_6r_hswc_rcr0000gn/T/rust_mozprofilegIWTOd"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1696883916011	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-remote-allow-hosts"
+1696883916439	Marionette	INFO	Listening on port 57234
+WebDriver BiDi listening on ws://127.0.0.1:57218
+Read port: 57234
+1696883916753	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:57218/devtools/browser/3edba9c0-1767-45a8-aba1-58248938b5eb
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.google.pt."
+JavaScript warning: https://www.google.pt/search?q=+bitcoin+price&sca_esv=571963393&source=hp&ei=zmQkZfHOL--gkdUP2IOGqAI&iflsig=AO6bgOgAAAAAZSRy3sdiTPpKAPX93q5huoJokBaILrMH&ved=0ahUKEwjx7dCZ6emBAxVvUKQEHdiBASUQ4dUDCAk&uact=5&oq=+bitcoin+price&gs_lp=Egdnd3Mtd2l6Ig4gYml0Y29pbiBwcmljZTIEEAAYAzILEAAYgAQYsQMYgwEyCxAAGIAEGLEDGIMBMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABEi-EFAAWDlwAXgAkAEBmAFdoAHHAqoBATS4AQPIAQD4AQGoAgrCAhAQABgDGI8BGOUCGOoCGIwDwgIQEC4YAxiPARjlAhjqAhiMAw&sclient=gws-wiz, line 24: Script terminated by timeout at:
+m@https://www.google.pt/search?q=+bitcoin+price&sca_esv=571963393&source=hp&ei=zmQkZfHOL--gkdUP2IOGqAI&iflsig=AO6bgOgAAAAAZSRy3sdiTPpKAPX93q5huoJokBaILrMH&ved=0ahUKEwjx7dCZ6emBAxVvUKQEHdiBASUQ4dUDCAk&uact=5&oq=+bitcoin+price&gs_lp=Egdnd3Mtd2l6Ig4gYml0Y29pbiBwcmljZTIEEAAYAzILEAAYgAQYsQMYgwEyCxAAGIAEGLEDGIMBMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABEi-EFAAWDlwAXgAkAEBmAFdoAHHAqoBATS4AQPIAQD4AQGoAgrCAhAQABgDGI8BGOUCGOoCGIwDwgIQEC4YAxiPARjlAhjqAhiMAw&sclient=gws-wiz:24:226
+
+1696883934810	Marionette	INFO	Stopped listening on port 57234
